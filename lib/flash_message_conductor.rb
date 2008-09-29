@@ -40,7 +40,6 @@ module PlanetArgon
         div_content = ''
         FLASH_MESSAGE_TYPES.each do |key|
           div_content << render_flash_message( key.to_s, flash[key] ) unless flash[key].blank?
-          div_content << render_flash_message( key.to_s, flash.now[key] ) unless flash.now[key].blank?
         end
         if div_content.blank?
           return ""
