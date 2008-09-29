@@ -9,12 +9,24 @@ module PlanetArgon
         flash[:error] = msg
       end
 
+      def add_error_now(msg)
+        flash.now[:error] = msg
+      end
+      
       def add_notice(msg)
         flash[:notice] = msg
       end
-
+      
+      def add_notice_now(msg)
+        flash.now[:notice] = msg
+      end
+      
       def add_message(msg)
         flash[:message] = msg
+      end
+      
+      def add_message_now(msg)
+        flash.now[:message] = msg
       end
     end
   
@@ -28,6 +40,7 @@ module PlanetArgon
         div_content = ''
         FLASH_MESSAGE_TYPES.each do |key|
           div_content << render_flash_message( key.to_s, flash[key] ) unless flash[key].blank?
+          div_content << render_flash_message( key.to_s, flash.now[key] ) unless flash.now[key].blank?
         end
         if div_content.blank?
           return ""
